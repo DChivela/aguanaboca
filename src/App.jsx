@@ -31,10 +31,10 @@ import menuData from "./menuData";
 function generateSections(data) {
   try {
     const sections = [];
-    
+
     for (const category in data) {
       const value = data[category];
-      
+
       if (Array.isArray(value)) {
         sections.push({ title: category, items: value, id: category });
       } else if (typeof value === "object") {
@@ -49,7 +49,7 @@ function generateSections(data) {
         }
       }
     }
-    
+
     console.log("Seções geradas:", sections.length);
     return sections;
   } catch (error) {
@@ -69,10 +69,10 @@ function formatPrice(price) {
       const firstPrice = Object.values(price)[0];
       return formatPrice(firstPrice);
     }
-    
+
     // Remove pontos e substitui vírgula por ponto para parsear
     const numericPrice = parseFloat(price.replace(/\./g, "").replace(",", "."));
-    
+
     // Formata como moeda
     return new Intl.NumberFormat("pt-ao", {
       style: "currency",
@@ -223,9 +223,8 @@ function MenuItem({ item, onAddToCart, itemKey }) {
                 <Button size="sm" onClick={toggleModal} className="bg-[#774936]">Fechar</Button>
               </div>
               <div className="mt-4">
-                <img src={item.image || "/default.jpg"} alt={item.name} className={`w-full object-contain rounded-md mb-2 ${
-                  item.name.toLowerCase().includes('água') ? 'h-32' : 'h-44'
-                }`} />
+                <img src={item.image || "/default.jpg"} alt={item.name} className={`w-full object-contain rounded-md mb-2 ${item.name.toLowerCase().includes('água') ? 'h-32' : 'h-44'
+                  }`} />
                 <p className="font-semibold text-[#774936]">{item.name}</p>
                 <p className="text-[#e63946] mb-2">{displayedPrice()}</p>
                 {typeof item.price === 'object' && <SizeOptions priceObj={item.price} />}
@@ -243,27 +242,42 @@ function MenuItem({ item, onAddToCart, itemKey }) {
 }
 
 // Componente para cada seção (categoria) com efeito gaveta (accordion)
-function MenuSection({ title, items, id, onAddToCart }) {
-  const [isOpen, setIsOpen] = useState(false);
+function MenuSection({ title, items, id, onAddToCart, defaultOpen = false }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
   const toggle = () => setIsOpen((s) => !s);
 
   return (
     <section id={id} className="mb-6 border-b pb-4">
-      <button onClick={toggle} className="w-full flex justify-between items-center py-3">
+      <button
+        onClick={toggle}
+        className="w-full flex justify-between items-center py-3"
+      >
         <h2 className="text-2xl font-bold text-[#774936]">{title}</h2>
-        <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
           <ChevronDown className="w-6 h-6 text-[#774936]" />
         </motion.span>
       </button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
             <div className="relative">
               <div className="overflow-x-auto pb-4 hide-scrollbar">
                 <div className="flex space-x-4 min-w-full">
-                  {items && items.map((item, index) => (
-                    <div key={`${id}-${index}`} className="min-w-[250px] max-w-[250px]">
+                  {items.map((item, index) => (
+                    <div
+                      key={`${id}-${index}`}
+                      className="min-w-[250px] max-w-[250px]"
+                    >
                       <MenuItem
                         itemKey={`${id}-${index}`}
                         item={item}
@@ -280,6 +294,7 @@ function MenuSection({ title, items, id, onAddToCart }) {
     </section>
   );
 }
+
 
 // Componente que agrupa secções "Outros" e exibe cada secção interna como gaveta
 function OthersAccordion({ sections, onAddToCart }) {
@@ -395,12 +410,12 @@ export default function App() {
 
   useEffect(() => {
     console.log("App inicializado, gerando seções...");
-    
+
     // Mostrar o conteúdo após o splash screen
     const timer = setTimeout(() => {
       setShowContent(true);
     }, 3000);
-    
+
     // Garantir que as seções do menu são geradas quando o componente é montado
     try {
       const generatedSections = generateSections(menuData);
@@ -409,14 +424,14 @@ export default function App() {
     } catch (error) {
       console.error("Failed to load menu data:", error);
     }
-    
+
     return () => clearTimeout(timer);
   }, []);
 
   const addToCart = (item) => {
     // Cria uma cópia do item para não modificar o original
     const itemToAdd = { ...item };
-    
+
     // Se o preço for um objeto (como pizzas com P, M, G), usar o preço P como padrão
     if (typeof itemToAdd.price === 'object') {
       // Adiciona informação sobre preços disponíveis
@@ -426,7 +441,7 @@ export default function App() {
       // Adiciona uma descrição do tamanho
       itemToAdd.selectedSize = Object.keys(itemToAdd.priceOptions)[0];
     }
-    
+
     setCart((currentCart) => {
       const productId = itemToAdd.id || itemToAdd.name;
       const existingItem = currentCart.find(
@@ -494,7 +509,7 @@ export default function App() {
 
   const popularSections = menuSections.filter(isSectionPopular);
   const othersSections = menuSections.filter((s) => !isSectionPopular(s));
-  
+
   return (
     <>
       <SplashScreen />
@@ -551,7 +566,7 @@ export default function App() {
             </h1>
             <h3 className="md:text-sm text-center text-[#774936]">Faça o seu Pedido Receba em Casa ou retire no Local</h3>
             <div className="border border-solid border-[#f9c74f] mb-2"></div>
-            
+
             {menuSections && menuSections.length > 0 ? (
               <>
                 {popularSections.map((section) => (
@@ -561,16 +576,21 @@ export default function App() {
                     items={section.items}
                     id={section.id}
                     onAddToCart={addToCart}
+                    defaultOpen={true} // 👈 ABERTAS POR DEFEITO
                   />
                 ))}
 
-                <OthersAccordion sections={othersSections} onAddToCart={addToCart} />
+                <OthersAccordion
+                  sections={othersSections}
+                  onAddToCart={addToCart}
+                />
               </>
             ) : (
               <div className="text-center py-8">
                 <p className="text-xl text-gray-500">Carregando menu...</p>
               </div>
             )}
+
           </main>
 
           <footer className="bg-[#774936] text-white py-8">
