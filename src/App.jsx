@@ -576,7 +576,7 @@ export default function App() {
                     items={section.items}
                     id={section.id}
                     onAddToCart={addToCart}
-                    defaultOpen={true} // 👈 ABERTAS POR DEFEITO
+                    defaultOpen={true} //ABERTAS POR DEFEITO
                   />
                 ))}
 

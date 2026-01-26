@@ -57,8 +57,16 @@ const CartModal = ({
     }
   };
 
+  const calculateDeliveryFee = () => {
+    // Calcula a quantidade total de itens no carrinho
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    // Se apenas 1 item, cobra taxa de entrega de 1500 KZ
+    // Se 2 ou mais, sem taxa
+    return totalItems === 1 ? 1500 : 0;
+  };
+
   const calculateTotal = () => {
-    return cart.reduce((total, item) => {
+    const subtotal = cart.reduce((total, item) => {
       try {
         const priceNum = parsePrice(item.price);
         return total + priceNum * item.quantity;
@@ -67,6 +75,8 @@ const CartModal = ({
         return total;
       }
     }, 0);
+    
+    return subtotal + calculateDeliveryFee();
   };
 
   const formatOrderForWhatsApp = () => {
@@ -99,7 +109,17 @@ const CartModal = ({
       ? `\n\n📝 *Observações:* ${observacoes}` 
       : '';
 
-    const footer = `\n\n💵 *TOTAL:  ${calculateTotal().toFixed(2)} Kz* `;
+    const subtotal = cart.reduce((total, item) => {
+      const priceNum = parsePrice(item.price);
+      return total + priceNum * item.quantity;
+    }, 0);
+
+    const deliveryFee = calculateDeliveryFee();
+    const deliveryText = deliveryFee > 0 
+      ? `\n📦 *Taxa de Entrega:* ${deliveryFee.toFixed(2)} Kz` 
+      : '';
+
+    const footer = `${deliveryText}\n\n💵 *TOTAL:  ${calculateTotal().toFixed(2)} Kz* `;
 
     return encodeURIComponent(header + orderInfo + items + observacoesText + footer);
   };
@@ -197,7 +217,24 @@ const CartModal = ({
         </div>
 
         <div className="border-t pt-4">
-          <div className="flex justify-between items-center mb-4">
+          <div className="space-y-2 mb-4">
+            <div className="flex justify-between items-center">
+              <span>Subtotal:</span>
+              <span>
+                Kz {cart.reduce((total, item) => {
+                  const priceNum = parsePrice(item.price);
+                  return total + priceNum * item.quantity;
+                }, 0).toFixed(2)}
+              </span>
+            </div>
+            {calculateDeliveryFee() > 0 && (
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-gray-600">Taxa de Entrega:</span>
+                <span className="text-[#e63946]">+ Kz {calculateDeliveryFee().toFixed(2)}</span>
+              </div>
+            )}
+          </div>
+          <div className="flex justify-between items-center mb-4 border-t pt-2">
             <span className="font-bold">Total:</span>
             <span className="font-bold text-[#e63946]">
               Kz {calculateTotal().toFixed(2)}
@@ -277,7 +314,24 @@ const CartModal = ({
         </div>
 
         <div className="border-t pt-4">
-          <div className="flex justify-between items-center mb-4">
+          <div className="space-y-2 mb-4">
+            <div className="flex justify-between items-center">
+              <span>Subtotal:</span>
+              <span>
+                Kz {cart.reduce((total, item) => {
+                  const priceNum = parsePrice(item.price);
+                  return total + priceNum * item.quantity;
+                }, 0).toFixed(2)}
+              </span>
+            </div>
+            {calculateDeliveryFee() > 0 && (
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-gray-600">Taxa de Entrega:</span>
+                <span className="text-[#e63946]">+ Kz {calculateDeliveryFee().toFixed(2)}</span>
+              </div>
+            )}
+          </div>
+          <div className="flex justify-between items-center mb-4 border-t pt-2">
             <span className="font-bold">Total a Pagar:</span>
             <span className="font-bold text-[#e63946]">
               Kz {calculateTotal().toFixed(2)}
