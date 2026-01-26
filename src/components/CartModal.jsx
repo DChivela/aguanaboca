@@ -58,11 +58,8 @@ const CartModal = ({
   };
 
   const calculateDeliveryFee = () => {
-    // Calcula a quantidade total de itens no carrinho
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    // Se apenas 1 item, cobra taxa de entrega de 1500 KZ
-    // Se 2 ou mais, sem taxa
-    return totalItems === 1 ? 1500 : 0;
+    // Taxa fixa de entrega: 1500 KZ para todos os pedidos
+    return 1500;
   };
 
   const calculateTotal = () => {
