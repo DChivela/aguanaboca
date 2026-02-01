@@ -193,7 +193,7 @@ function MenuItem({ item, onAddToCart, itemKey }) {
           <Button
             size="sm"
             className="bg-gradient-to-r from-[#e63946] to-[#f9c74f] w-full hover:opacity-90"
-            onClick={() => onAddToCart(item)}
+            onClick={() => onAddToCart(item, selectedSize)}
           >
             <ShoppingCart className="w-4 h-4 mr-2" />
             <p>Adicionar</p>
@@ -230,7 +230,7 @@ function MenuItem({ item, onAddToCart, itemKey }) {
                 {typeof item.price === 'object' && <SizeOptions priceObj={item.price} />}
                 <p className="text-gray-700 text-sm mt-2">{item.description}</p>
                 <div className="mt-4">
-                  <Button onClick={() => { onAddToCart(item); toggleModal(); }} className="bg-gradient-to-r from-[#e63946] to-[#f9c74f]">Adicionar</Button>
+                  <Button onClick={() => { onAddToCart(item, selectedSize); toggleModal(); }} className="bg-gradient-to-r from-[#e63946] to-[#f9c74f]">Adicionar</Button>
                 </div>
               </div>
             </motion.div>
@@ -428,28 +428,28 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const addToCart = (item) => {
+  const addToCart = (item, selectedSize = null) => {
     // Cria uma cópia do item para não modificar o original
     const itemToAdd = { ...item };
 
-    // Se o preço for um objeto (como pizzas com P, M, G), usar o preço P como padrão
+    // Se o preço for um objeto (como pizzas com P, M, G), usa o tamanho selecionado (ou padrão)
     if (typeof itemToAdd.price === 'object') {
       // Adiciona informação sobre preços disponíveis
       itemToAdd.priceOptions = { ...itemToAdd.price };
-      // Usa o primeiro preço como padrão (geralmente P)
-      itemToAdd.price = Object.values(itemToAdd.price)[0];
-      // Adiciona uma descrição do tamanho
-      itemToAdd.selectedSize = Object.keys(itemToAdd.priceOptions)[0];
+      // Usa o tamanho selecionado se fornecido, senão usa o primeiro disponível
+      const sizeKey = selectedSize || Object.keys(itemToAdd.priceOptions)[0];
+      itemToAdd.selectedSize = sizeKey;
+      itemToAdd.price = itemToAdd.priceOptions[sizeKey];
     }
 
     setCart((currentCart) => {
-      const productId = itemToAdd.id || itemToAdd.name;
-      const existingItem = currentCart.find(
-        (cartItem) => (cartItem.id || cartItem.name) === productId
-      );
+      const baseId = itemToAdd.id || itemToAdd.name;
+      const productId = itemToAdd.selectedSize ? `${baseId}-${itemToAdd.selectedSize}` : baseId;
+
+      const existingItem = currentCart.find((cartItem) => cartItem.id === productId);
       if (existingItem) {
         return currentCart.map((cartItem) =>
-          (cartItem.id || cartItem.name) === productId
+          cartItem.id === productId
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );

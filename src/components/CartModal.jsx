@@ -26,39 +26,39 @@ const CartModal = ({
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [checkoutStep, setCheckoutStep] = useState(1); // Step 1: Cart, Step 2: Delivery Info
 
-  // WhatsApp number - replace with your restaurant's number
+  // WhatsApp number - substituir com outro número se necessário
   const WHATSAPP_NUMBER = "973336729";
 
-  // Generate order number when modal opens
+  // Gerar número de encomenda quando o modal abre
   useEffect(() => {
     if (isOpen) {
-      const random = Math.floor(10000 + Math.random() * 90000); // Generates 5-digit number
+      const random = Math.floor(10000 + Math.random() * 90000); // Gera um número de 5 dígitos
       setOrderNumber(random.toString());
       setCurrentDateTime(new Date());
-      setCheckoutStep(1); // Reset to step 1 when opening
+      setCheckoutStep(1); // Reseta para o passo 1 quando o modal abre
     }
   }, [isOpen]);
 
-  // Função para converter o preço de string para número
+  // Função para converter o preço de string para número decimal
   const parsePrice = (priceStr) => {
     try {
       // Se for um objeto (ex: pizzas tem preços P, M, G)
       if (typeof priceStr === 'object') {
-        // Pega o primeiro preço disponível
+        // Pega o primeiro preço disponível para exibir
         const firstPrice = Object.values(priceStr)[0];
         return parsePrice(firstPrice);
       }
       
-      // Remove pontos e substitui vírgula por ponto para parsear
+      // Remove pontos e substitui vírgula por ponto para converter para número decimal
       return parseFloat(priceStr.replace(/\./g, "").replace(",", "."));
     } catch (error) {
       console.error("Erro ao parsear preço:", priceStr);
-      return 0; // Retorna 0 em caso de erro
+      return 0; // Retorna 0 em caso de erro para evitar falhas no cálculo
     }
   };
 
   const calculateDeliveryFee = () => {
-    // Taxa fixa de entrega: 1500 KZ para todos os pedidos
+    // Taxa fixa de entrega: 1500 Kz para todos os pedidos
     return 1500;
   };
 
@@ -93,8 +93,9 @@ const CartModal = ({
     const items = cart
       .map((item) => {
         const priceNum = parsePrice(item.price);
+        const sizeText = item.selectedSize ? ` (${item.selectedSize})` : '';
         return (
-          `• ${item.quantity}x ${item.name}\n` +
+          `• ${item.quantity}x ${item.name}${sizeText}\n` +
           `   💰  ${priceNum.toFixed(2)} Kz cada =  ${(
             priceNum * item.quantity
           ).toFixed(2)} Kz`
@@ -168,7 +169,10 @@ const CartModal = ({
                   className="flex items-center justify-between border-b pb-2"
                 >
                   <div className="flex-1">
-                    <h3 className="font-medium">{item.name}</h3>
+                    <h3 className="font-medium">{item.name}{item.selectedSize ? ` (${item.selectedSize})` : ''}</h3>
+                    {item.selectedSize && (
+                      <p className="text-sm text-gray-500">Tamanho: {item.selectedSize}</p>
+                    )}
                     <p className="text-sm text-gray-500">
                       {new Intl.NumberFormat("pt-ao", {
                         style: "currency",

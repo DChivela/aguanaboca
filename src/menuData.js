@@ -4,34 +4,34 @@ const menuData = {
   "CALZONES": [
     {
       name: "CALZONE DE FRANGO",
-      price: { P: "5.000,00", M: "6.000,00", G: "7.000,00" },
+      price: { P: "5.500,00", M: "6.500,00", G: "8.500,00" },
       description: "Frango, chouriço, queijo, tomate, cebola, azeitona, cogumelo, pimentos e milho doce.",
       image: "/snack/calzonefrango.jpeg",
     },
     {
       name: "CALZONE DE CARNE",
-      price: { P: "5.000,00", M: "6.000,00", G: "7.000,00" },
+      price: { P: "5.500,00", M: "6.500,00", G: "8.500,00" },
       description: "Carne moída, chouriço, queijo, tomate, cebola, cogumelo, azeitona, pimento e milho doce.",
       image: "/snack/calzonecarne.jpeg",
     },
     {
       name: "CALZONE MISTA",
-      price: { P: "6.000,00", M: "7.000,00", G: "8.000,00" },
+      price: { P: "5.500,00", M: "6.500,00", G: "8.500,00" },
       description: "Carne moída, frango, chouriço, queijo, tomate, cebola, cogumelo, azeitona, pimento e milho doce.",
       image: "/snack/calzonemista.jpeg",
     },
-    {
-      name: "CALZONE DE CAMARÃO",
-      price: { P: "6.000,00", M: "7.000,00", G: "8.000,00" },
-      description: "Camarão, queijo, pimento, cebola, azeitona e cogumelo.",
-      image: "/snack/calzonecama.jpeg",
-    },
-    {
-      name: "CALZONE DE ATUM",
-      price: { P: "5.000,00", M: "6.000,00", G: "8.000,00" },
-      description: "Queijo, azeitona, pimento, cebola, tomate, milho doce, atum.",
-      image: "/snack/calzoneatum.jpeg",
-    },
+    // {
+    //   name: "CALZONE DE CAMARÃO",
+    //   price: { P: "6.000,00", M: "7.000,00", G: "8.000,00" },
+    //   description: "Camarão, queijo, pimento, cebola, azeitona e cogumelo.",
+    //   image: "/snack/calzonecama.jpeg",
+    // },
+    // {
+    //   name: "CALZONE DE ATUM",
+    //   price: { P: "5.000,00", M: "6.000,00", G: "8.000,00" },
+    //   description: "Queijo, azeitona, pimento, cebola, tomate, milho doce, atum.",
+    //   image: "/snack/calzoneatum.jpeg",
+    // },
   ],
 
   "PIZZAS": [
@@ -60,12 +60,12 @@ const menuData = {
       description: "Chouriço, frango, bacon, fiambre, queijo, milho doce e cogumelo.",
       image: "/snack/pizzacapri.jpeg",
     },
-    {
-      name: "PIZZA CAMARÃO",
-      price: { P: "9.000,00", M: "11.000,00", G: "14.000,00" },
-      description: "Camarão, pimento, cebola, queijo, azeitona e cogumelo.",
-      image: "/snack/pizzamaca.jpeg",
-    },
+    // {
+    //   name: "PIZZA CAMARÃO",
+    //   price: { P: "9.000,00", M: "11.000,00", G: "14.000,00" },
+    //   description: "Camarão, pimento, cebola, queijo, azeitona e cogumelo.",
+    //   image: "/snack/pizzamaca.jpeg",
+    // },
     {
       name: "PIZZA MARGARIDA",
       price: { P: "6.000,00", M: "7.000,00", G: "9.000,00" },
@@ -84,12 +84,12 @@ const menuData = {
       description: "Frango, bacon, milho doce, ovo e cogumelo.",
       image: "/snack/pizzacarbo.jpeg",
     },
-    {
-      name: "PIZZA DE ATUM",
-      price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
-      description: "Atum, cogumelo, pimentos, cebola, tomate, milho doce e azeitona.",
-      image: "/snack/pizza.jpeg",
-    },
+    // {
+    //   name: "PIZZA DE ATUM",
+    //   price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
+    //   description: "Atum, cogumelo, pimentos, cebola, tomate, milho doce e azeitona.",
+    //   image: "/snack/pizza.jpeg",
+    // },
   ],
 
   "FAHITAS": [
