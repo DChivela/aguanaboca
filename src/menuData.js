@@ -43,20 +43,20 @@ const menuData = {
     },
     {
       name: "PIZZA ÁGUA NA BOCA",
-      price: { P: "7.000,00", M: "10.000,00", G: "12.000,00" },
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
       description: "Frango, chouriço, ovo, fiambre, bacon, queijo, azeitona, pimenta, cebola, milho doce e cogumelo.",
       image: "/snack/pizza.jpeg",
     },
     {
 
       name: "PIZZA BOLONHESA",
-      price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
       description: "Carne moída, cogumelo, queijo, milho doce e azeitona.",
       image: "/snack/pizzabolonhesa.jpeg",
     },
     {
       name: "PIZZA CAPRICHOSA",
-      price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
       description: "Chouriço, frango, bacon, fiambre, queijo, milho doce e cogumelo.",
       image: "/snack/pizzacapri.jpeg",
     },
@@ -68,22 +68,22 @@ const menuData = {
     // },
     {
       name: "PIZZA MARGARIDA",
-      price: { P: "6.000,00", M: "7.000,00", G: "9.000,00" },
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
       description: "Queijo e azeitona.",
       image: "/snack/pizzamarga.jpeg",
     },
     {
       name: "PIZZA VEGETARIANA",
-      price: { P: "7.000,00", M: "8.000,00", G: "10.000,00" },
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
       description: "Cogumelo, azeitona, pimento, cebola, milho doce e tomate.",
       image: "/snack/pizzavege.jpeg",
     },
-    {
-      name: "PIZZA CARBONARA",
-      price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
-      description: "Frango, bacon, milho doce, ovo e cogumelo.",
-      image: "/snack/pizzacarbo.jpeg",
-    },
+    // {
+    //   name: "PIZZA CARBONARA",
+    //   price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
+    //   description: "Frango, bacon, milho doce, ovo e cogumelo.",
+    //   image: "/snack/pizzacarbo.jpeg",
+    // },
     // {
     //   name: "PIZZA DE ATUM",
     //   price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
@@ -94,28 +94,43 @@ const menuData = {
 
   "FAHITAS": [
     {
-      name: "FAHITA ÁGUA NA BOCA",
-      price: "5.000,00",
-      description: "Frango, chouriço, ovo, fiambre, bacon, azeitona, pimenta, cebola, milho doce, cogumelo e batata frita.",
-      image: "/snack/fahitaagua.jpeg",
+      name: "FAHITA DE CARNE SIMPLES",
+      price: "3.000,00",
+      description: "Carne, Queijo, Alface, Milho Doce, Cebola e Pimento.",
+      image: "/snack/fahitacarne_simples.png",
     },
     {
-      name: "FAHITA DE CARNE",
-      price: "2.500,00",
-      description: "Carne moída, cogumelo, milho doce, azeitona e batata frita.",
-      image: "/snack/fahitacarne.jpeg",
-    },
-    {
-      name: "FAHITA FRANGO",
-      price: "2.500,00",
-      description: "Chouriço, frango, bacon, fiambre, milho doce, cogumelo e batata frita.",
+      name: "FAHITA FRANGO SIMPLES",
+      price: "3.000,00",
+      description: "Frango, Queijo, Alface, Cebola, Milho Doce e Pimento.",
       image: "/snack/fahitafrango.jpeg",
     },
+
     {
-      name: "FAHITA MISTA",
+      name: "FAHITA MISTA SIMPLES",
       price: "3.000,00",
-      description: "Camarão, pimento, cebola, azeitona e cogumelo e batata frita.",
+      description: "Frango, Carne, Queijo, Milho Doce, Cebola e Pimento.",
       image: "/snack/fahitamista.jpeg",
+    },
+
+    {
+      name: "FAHITA DE CARNE COMPOSTA",
+      price: "4.000,00",
+      description: "Carne, Queijo, Alface, Milho Doce, Cebola, Pimento e Batata Frita.",
+      image: "/snack/fahitacarne.jpeg",
+    },
+
+    {
+      name: "FAHITA FRANGO COMPOSTA",
+      price: "4.000,00",
+      description: "Frango, Queijo, Alface, Cebola, Milho Doce, Pimento e Batata Frita.",
+      image: "/snack/fahitafrangocomposta.png.png",
+    },
+    {
+      name: "FAHITA MISTA COMPOSTA",
+      price: "4.000,00",
+      description: "Frango, Carne, Queijo, Milho Doce, Cebola, Pimento e Batata Frita.",
+      image: "/snack/fahitamistacomposta.png.png",
     },
   ],
 
