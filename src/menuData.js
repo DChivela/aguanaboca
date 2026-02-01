@@ -110,7 +110,7 @@ const menuData = {
       image: "/snack/fahitacarne_simples.png",
     },
     {
-      name: "FAHITA FRANGO SIMPLES",
+      name: "FAHITA DE FRANGO SIMPLES",
       price: "3.000,00",
       description: "Frango, Queijo, Alface, Cebola, Milho Doce e Pimento.",
       image: "/snack/fahitafrango.jpeg",
@@ -131,7 +131,7 @@ const menuData = {
     },
 
     {
-      name: "FAHITA FRANGO COMPOSTA",
+      name: "FAHITA DE FRANGO COMPOSTA",
       price: "4.000,00",
       description: "Frango, Queijo, Alface, Cebola, Milho Doce, Pimento e Batata Frita.",
       image: "/snack/fahitafrangocomposta.png.png",
