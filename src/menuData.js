@@ -54,6 +54,21 @@ const menuData = {
       description: "Carne moída, cogumelo, queijo, milho doce e azeitona.",
       image: "/snack/pizzabolonhesa.jpeg",
     },
+
+    {
+      name: "PIZZA 4 ESTAÇÕES",
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
+      description: "Chouriço, Frango, Bacon, Fiambre, Queijo, Milho Doce e Cogumelo.",
+      image: "/snack/pizza4estacoes.png",
+    },
+
+    {
+      name: "PIZZA VEGETARIANA",
+      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
+      description: "Cogumelo, azeitona, pimento, cebola, milho doce e tomate.",
+      image: "/snack/pizzavege.jpeg",
+    },
+
     {
       name: "PIZZA CAPRICHOSA",
       price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
@@ -67,29 +82,24 @@ const menuData = {
     //   image: "/snack/pizzamaca.jpeg",
     // },
     {
-      name: "PIZZA MARGARIDA",
+      name: "PIZZA MARGARITA",
       price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
       description: "Queijo e azeitona.",
       image: "/snack/pizzamarga.jpeg",
     },
-    {
-      name: "PIZZA VEGETARIANA",
-      price: { P: "9.000,00", M: "11.000,00", G: "13.000,00" },
-      description: "Cogumelo, azeitona, pimento, cebola, milho doce e tomate.",
-      image: "/snack/pizzavege.jpeg",
-    },
+
     // {
     //   name: "PIZZA CARBONARA",
     //   price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
     //   description: "Frango, bacon, milho doce, ovo e cogumelo.",
     //   image: "/snack/pizzacarbo.jpeg",
     // },
-    // {
-    //   name: "PIZZA DE ATUM",
-    //   price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
-    //   description: "Atum, cogumelo, pimentos, cebola, tomate, milho doce e azeitona.",
-    //   image: "/snack/pizza.jpeg",
-    // },
+    {
+      name: "PIZZA DE ATUM",
+      price: { P: "8.000,00", M: "10.000,00", G: "12.000,00" },
+      description: "Atum, cogumelo, pimentos, cebola, tomate, milho doce e azeitona.",
+      image: "/snack/pizza.jpeg",
+    },
   ],
 
   "FAHITAS": [
