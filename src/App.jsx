@@ -107,14 +107,14 @@ function MenuItem({ item, onAddToCart, itemKey }) {
   const toggleModal = () => setIsModalOpen((s) => !s);
 
   const SizeOptions = ({ priceObj }) => (
-    <div className="flex space-x-2 mb-2">
+    <div className="flex flex-wrap gap-2 mb-2">
       {Object.entries(priceObj).map(([sizeKey, sizePrice]) => (
         <button
           key={sizeKey}
           onClick={() => setSelectedSize(sizeKey)}
-          className={`px-2 py-1 rounded text-sm border ${selectedSize === sizeKey ? 'bg-[#e63946] text-white border-[#e63946]' : 'bg-white text-[#774936]'}`}
+          className={`px-2 py-1 rounded text-sm border text-left whitespace-normal break-words min-w-[56px] max-w-[150px] ${selectedSize === sizeKey ? 'bg-[#e63946] text-white border-[#e63946]' : 'bg-white text-[#774936]'}`}
         >
-          {sizeKey.toUpperCase()} - {formatPrice(sizePrice)}
+          <span className="block whitespace-normal break-words">{sizeKey.toUpperCase()} - {formatPrice(sizePrice)}</span>
         </button>
       ))}
     </div>
