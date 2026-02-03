@@ -13,6 +13,7 @@ const POPULAR_KEYWORDS = [
   "fahitas",
   "sumol lata",
   "compal lata",
+  "dose de batata frita",
 ];
 import CartModal from "./components/CartModal";
 import { motion, AnimatePresence } from "framer-motion";
@@ -494,6 +495,7 @@ export default function App() {
     'FAHITAS',
     'HAMBURGUERES',
     'SUMOS',
+    'EXTRA'
   ];
 
   const isSectionPopular = (section) => {

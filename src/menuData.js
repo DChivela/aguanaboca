@@ -20,6 +20,7 @@ const menuData = {
       description: "Carne moída, frango, chouriço, queijo, tomate, cebola, cogumelo, azeitona, pimento e milho doce.",
       image: "/snack/calzonemista.jpeg",
     },
+
     // {
     //   name: "CALZONE DE CAMARÃO",
     //   price: { P: "6.000,00", M: "7.000,00", G: "8.000,00" },
@@ -192,10 +193,20 @@ const menuData = {
     {
       name: "OMELETE MISTA",
       price: "2.500,00",
+      popular: true,
       description: "Ovo, cebola, salsa, carne/frango, queijo e fiambre.",
       image: "/cafetaria/omelete.jpg",
     },
 
+  ],
+
+  "EXTRA": [
+    {
+      name: "DOSE DE BATATA FRITA",
+      price: "1.100,00",
+      description: "Batata frita crocante com molho especial.",
+      image: "/snack/batatafrita.jpeg",
+    },
   ],
 
   // "CAFETARIA": [
